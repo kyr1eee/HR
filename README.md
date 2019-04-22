@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # app
 
 > My exceptional Nuxt.js project
@@ -20,3 +21,7 @@ $ npm run generate
 ```
 
 For detailed explanation on how things work, checkout [Nuxt.js docs](https://nuxtjs.org).
+=======
+# HR
+企业招聘管理系统
+>>>>>>> e8b2ae3f3081bb6289c3cdf7b28c1c97473ed667
