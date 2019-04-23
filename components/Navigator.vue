@@ -3,19 +3,29 @@
     <div class="nav-content">
       <nav>
         <ul>
-          <nuxt-link tag="li" to="/home">
+          <nuxt-link
+            tag="li"
+            to="/home">
             <span>首页</span>
           </nuxt-link>
-          <nuxt-link tag="li" to="/job-post">
+          <nuxt-link
+            tag="li"
+            to="/job-post">
             <span>求职区</span>
           </nuxt-link>
-          <nuxt-link tag="li" to="/job-manage">
+          <nuxt-link
+            tag="li"
+            to="/job-manage">
             <span>职位管理</span>
           </nuxt-link>
-          <nuxt-link tag="li" to="/job-recruit">
+          <nuxt-link
+            tag="li"
+            to="/job-recruit">
             <span>职位招聘</span>
           </nuxt-link>
-          <nuxt-link tag="li" to="/resume-manage">
+          <nuxt-link
+            tag="li"
+            to="/resume-manage">
             <span>简历管理</span>
           </nuxt-link>
         </ul>
