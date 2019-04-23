@@ -1,9 +1,5 @@
 <template>
-  <div>
-    <header>
-      <navigator />
-    </header>
-  </div>
+  <div />
 </template>
 
 <script>
@@ -16,4 +12,7 @@ export default {
 </script>
 
 <style>
+  #app {
+    background-color: #f4f5f5;
+  }
 </style>
