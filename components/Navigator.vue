@@ -1,24 +1,26 @@
 <template>
   <div class="top-header">
+    <div>
+      <nuxt-link
+        tag="span"
+        to="/"
+        class="home">
+        <img src="../static/home.png">
+      </nuxt-link>
+    </div>
     <nav class="nav-content">
       <ul class="nav-list">
         <nuxt-link
           tag="li"
-          to="/home"
-          active-class="active-link">
-          <a href="#">首页</a>
-        </nuxt-link>
-        <nuxt-link
-          tag="li"
           to="/job-post"
           active-class="active-link">
-          <a href="#">求职区</a>
+          <a>求职区</a>
         </nuxt-link>
         <nuxt-link
           tag="li"
           to="/job-manage"
           active-class="active-link">
-          <a href="#">职位管理</a>
+          <a>职位管理</a>
         </nuxt-link>
         <nuxt-link
           tag="li"
@@ -30,21 +32,25 @@
           tag="li"
           to="/resume-manage"
           active-class="active-link">
-          <a href="#">简历管理</a>
+          <a>简历管理</a>
         </nuxt-link>
       </ul>
-      <div>
-        <span>搜索框暂定</span>
-        <span>公司logo位置站定</span>
-      </div>
     </nav>
-
+    <div class="company">
+      <CompanyIcon />
+      <el-button
+        type="primary"
+        icon="el-icon-phone-outline">发布招聘</el-button>
+    </div>
   </div>
 </template>
 
 <script>
+import CompanyIcon from './company-icon';
 export default {
-
+  components: {
+    CompanyIcon
+  }
 }
 </script>
 
@@ -52,38 +58,55 @@ export default {
   .top-header {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     position: relative;
     top: 0px;
     left: 0px;
-    right: 0px;
-    min-width: 100%;
+    /* min-width 避免窗口过小 */
+    min-width: 960px;
     height: 70px;
-    background-color: aquamarine;
+    background-color: hsla(0,0%,100%,.4);
+    z-index: 100;
     color: #423d3d;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, .12), 0 0 6px rgba(0, 0, 0, .04);
+  }
+
+  .home {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    padding-left: 10px;
+  }
+
+  .home img:hover {
+    cursor: pointer;
   }
 
   .nav-content {
-    display: flex;
+    width: 40%;
   }
 
   .nav-list {
-    overflow: hidden;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    padding: 0;
+    width: 100%;
   }
 
   .nav-list li {
-    float: left;
     list-style: none;
     font-size: 15px;
     font-weight: 600;
-    width: 100px;
-    margin-left: 20px;
+    padding: 6px;
   }
 
-  .nav-list li a {
+  a {
     text-decoration: none;
     color: #423d3d;
+  }
+  .nav-list li a {
     display: inline-block;
     transition: all 0.6s;
   }
@@ -96,5 +119,13 @@ export default {
 
   .nav-list .active-link a {
     color: #187aff;
+  }
+
+  .company {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    align-items: center;
+    width: 20%;
   }
 </style>
