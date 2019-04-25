@@ -1,13 +1,7 @@
 <template>
   <div>
     <header id="header">
-      <div class="blur-bg" />
-      <navigator ref="nav"/>
-      <el-input
-        class="search"
-        placeholder="搜索简历"
-        suffix-icon="el-icon-search" />
-      <div class="jojo-bg" />
+      <my-menu />
     </header>
     <main
       id="router-view"
@@ -18,12 +12,17 @@
 </template>
 
 <script>
+import ResumeManage from '../pages/resume-manage';
 import Navigator from '../components/Navigator';
+import User from '../components/User';
 import throtte from '../common/throttle';
-import Menu from '../components/menu';
+import MyMenu from '../components/menu';
 export default {
   components: {
-    Navigator
+    Navigator,
+    MyMenu, // HTML5存在menu标签,因此改为MyMenu
+    User,
+    ResumeManage,
   },
   methods: {
     _scroll: function() {

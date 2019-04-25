@@ -37,7 +37,8 @@
       </ul>
     </nav>
     <div class="company">
-      <CompanyIcon />
+      <!-- <company-icon /> -->
+      <user />
       <el-button
         type="primary"
         icon="el-icon-phone-outline">发布招聘</el-button>
@@ -47,9 +48,11 @@
 
 <script>
 import CompanyIcon from './company-icon';
+import User from './User';
 export default {
   components: {
-    CompanyIcon
+    CompanyIcon,
+    User
   }
 }
 </script>
@@ -124,8 +127,9 @@ export default {
   .company {
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
     align-items: center;
     width: 20%;
+    height: 100%;
   }
 </style>
