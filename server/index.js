@@ -2,7 +2,19 @@ import Koa from 'koa'
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
+import bodyParser from 'koa-bodyparser'
+import json from 'koa-json'
+import company from './interface/company'
+
 const app = new Koa()
+
+app.use(bodyParser({
+  extendTypes: ['json', 'form', 'text']
+}))
+app.use(json())
+
+const connection = require('./dbs/index')
+connection.connect()
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -24,6 +36,8 @@ async function start() {
   } else {
     await nuxt.ready()
   }
+
+  app.use(company.routes()).use(company.allowedMethods())
 
   app.use(ctx => {
     ctx.status = 200
