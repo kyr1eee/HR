@@ -41,7 +41,8 @@
       <user />
       <el-button
         type="primary"
-        icon="el-icon-phone-outline">发布招聘</el-button>
+        icon="el-icon-phone-outline"
+        class="recruit">发布招聘</el-button>
     </div>
   </div>
 </template>
@@ -131,5 +132,9 @@ export default {
     align-items: center;
     width: 20%;
     height: 100%;
+  }
+
+  .recruit {
+    margin-right: 30px;
   }
 </style>

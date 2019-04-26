@@ -1,9 +1,7 @@
 <template>
   <div>
     <div>主页</div>
-    <div
-      class="test"
-      @click="console.log(1)">
+    <div class="test">
       我很长
     </div>
   </div>
