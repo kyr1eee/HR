@@ -1,4 +1,5 @@
-import Koa from 'koa'
+import Koa from 'koa';
+import Axios from 'axios';
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
 
@@ -30,9 +31,18 @@ async function start() {
     ctx.respond = false // Bypass Koa's built-in response handling
     ctx.req.ctx = ctx // This might be useful later on, e.g. in nuxtServerInit or with nuxt-stash
     nuxt.render(ctx.req, ctx.res)
-  })
+  });
 
-  app.listen(port, host)
+  // app.get('api/discuss', function(req, res) {
+  //   const url = 'http://stuer.ericwu.cn/api/posts?pageIndex=1&pageSize=15&type=1';
+  //   Axios.get(url).then(res => {
+  //     console.log('Get Discuss: ', res);
+  //   }).catch(e => {
+  //     console.error('Get Discuss Failed: ',e);
+  //   });
+  // });
+
+  app.listen(port, host);
   consola.ready({
     message: `Server listening on http://${host}:${port}`,
     badge: true

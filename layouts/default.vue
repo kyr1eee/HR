@@ -17,12 +17,16 @@ import Navigator from '../components/Navigator';
 import User from '../components/User';
 import throtte from '../common/throttle';
 import MyMenu from '../components/menu';
+import {getDiscuss} from '../server/api/discuss';
 export default {
   components: {
     Navigator,
     MyMenu, // HTML5存在menu标签,因此改为MyMenu
     User,
     ResumeManage,
+  },
+  mounted() {
+    this.getDiscuss();
   },
   methods: {
     _scroll: function() {
@@ -34,11 +38,19 @@ export default {
     },
     throteScroll: function() {
       throtte(this._scroll, 300);
+    },
+    getDiscuss() {
+      getDiscuss().then(res => {
+        console.log('Get Discuss: ', res);
+      }).catch(e => {
+        console.error('Get Discuss Failed: ',e);
+      })
     }
   }
 }
 </script>
-<style>
+
+<style lang="scss">
 body {
   padding: 0;
   margin: 0;
@@ -47,4 +59,10 @@ body {
 #header {
   position: relative;
 }
+#router-view {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
+
