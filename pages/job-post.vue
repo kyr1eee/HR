@@ -46,18 +46,20 @@ $bg: #fff;
     background: {
       color: $bg
     };
+
   }
 
   .right-content {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-    min-width: $width / 2;
+    justify-content: flex-start;
+    max-width: $width / 2;
     min-height: $minHeight;
 
     .topic-content {
       width: 100%;
-      height: 30%;
+      max-height: 30%;
+      min-height: 200px;
       background: {
       color: $bg
       };
@@ -65,7 +67,9 @@ $bg: #fff;
 
     .post-content {
       width: 100%;
-      height: 65%;
+      max-height: 65%;
+      min-height: 300px;
+      margin-top: 100px;
       background: {
       color: $bg
       };

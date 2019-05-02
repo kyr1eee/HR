@@ -4,8 +4,8 @@
       <li class="list">
         <div
           class="icon-container"
-          @mousemove="iconMove"
-          @mouseout="iconMoveOut">
+          @mouseenter="iconMove"
+          @mouseleave="iconMoveOut">
           <nuxt-link
             to="/my"
             tag="div">
@@ -13,13 +13,16 @@
           </nuxt-link>
         </div>
         <dl
-          @mouseout="resetStyle"
+          @mouseenter="listMove"
+          @mouseleave="listMoveOut"
           ref="menu">
-          <dd class="company-name">山寨野鸡公司名</dd>
-          <dd><nuxt-link to="/company">公司信息</nuxt-link></dd>
-          <dd><nuxt-link to="/mailbox">收件箱</nuxt-link></dd>
-          <dd><nuxt-link to="/settings">账户设置</nuxt-link></dd>
-          <dd class="exit">退出</dd>
+          <div>
+            <dd class="company-name">山寨野鸡公司名</dd>
+            <dd><nuxt-link to="/company">公司信息</nuxt-link></dd>
+            <dd><nuxt-link to="/mailbox">收件箱</nuxt-link></dd>
+            <dd><nuxt-link to="/settings">账户设置</nuxt-link></dd>
+            <dd class="exit">退出</dd>
+          </div>
         </dl>
       </li>
     </ul>
@@ -34,8 +37,7 @@ export default {
   },
   data() {
     return {
-      iconOut: '',
-      menuOut: ''
+      menuIn: false
     };
   },
   mounted(){
@@ -45,25 +47,36 @@ export default {
     iconMove() {
       this.$refs.menu.style.opacity = 1;
       this.$refs.menu.style.margin = '0px -50px';
-      this.iconOut = false;
       this.$refs.iconCompany.$el.style.marginTop = '50px';
       this.$refs.iconCompany.$el.style.width = '80px';
       this.$refs.iconCompany.$el.style.height = '80px';
     },
     iconMoveOut() {
-      if(this.menuOut)
-        this.resetStyle();
-      // 第一次获取焦点
-      if(this.menuOut === '')
-        this.resetStyle();
+      this.timer = setTimeout(() => {
+        if(this.menuIn === false) {
+          this.resetStyle();
+        }
+      }, 300);
     },
-    resetStyle() {
-      this.menuOut = true;
+    listMove() {
+      this.menuIn = true;
+    },
+    listMoveOut() {
+      this.menuIn = false;
       this.$refs.menu.style.opacity = 0;
       this.$refs.menu.style.margin = '20px -50px';
       this.$refs.iconCompany.$el.style.marginTop = '0px';
       this.$refs.iconCompany.$el.style.width = '50px';
       this.$refs.iconCompany.$el.style.height = '50px';
+      clearTimeout(this.timer);
+    },
+    resetStyle() {
+      this.$refs.menu.style.opacity = 0;
+      this.$refs.menu.style.margin = '20px -50px';
+      this.$refs.iconCompany.$el.style.marginTop = '0px';
+      this.$refs.iconCompany.$el.style.width = '50px';
+      this.$refs.iconCompany.$el.style.height = '50px';
+      clearTimeout(this.timer);
     }
   },
 }
@@ -83,13 +96,7 @@ li {
     cursor: pointer;
     display: inline-block;
   }
-  &.list:hover {
 
-    // >dl {
-    //   opacity: 1;
-    //   margin: 0px -50px;
-    // }
-  }
   dl {
     background: rgba(255, 255, 255, 0.81);
     position: absolute;
@@ -100,6 +107,12 @@ li {
     z-index: 110;
     padding: 0;
     transition: all .4s;
+
+    &:hover {
+      opacity: 1;
+      margin: 0px -50px;
+    }
+
     dd {
       text-align: center;
       line-height: 35px;
