@@ -39,10 +39,14 @@
     <div class="company">
       <!-- <company-icon /> -->
       <user />
-      <el-button
-        type="primary"
-        icon="el-icon-phone-outline"
-        class="recruit">发布招聘</el-button>
+      <nuxt-link
+        tag="span"
+        to="/job-recruit">
+        <el-button
+          type="primary"
+          icon="el-icon-phone-outline"
+          class="recruit">发布招聘</el-button>
+      </nuxt-link>
     </div>
   </div>
 </template>
