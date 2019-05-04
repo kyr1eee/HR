@@ -27,6 +27,10 @@
           to="/job-recruit"
           active-class="active-link">
           <a>职位招聘</a>
+          <ul class="recruit-list">
+            <li>招聘帖</li>
+            <li>发布招聘</li>
+          </ul>
         </nuxt-link>
         <nuxt-link
           tag="li"
@@ -45,7 +49,7 @@
         <el-button
           type="primary"
           icon="el-icon-phone-outline"
-          class="recruit">发布招聘</el-button>
+          class="recruit">写帖子</el-button>
       </nuxt-link>
     </div>
   </div>
@@ -140,5 +144,18 @@ export default {
 
   .recruit {
     margin-right: 30px;
+  }
+
+  .recruit-list {
+    display: flex;
+    list-style: none;
+    position: absolute;
+    width: 120px;
+    height: 100px;
+    bottom: -100px;
+    /* width2 - width1 / 2 */
+    margin-left: -30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.81);
   }
 </style>
