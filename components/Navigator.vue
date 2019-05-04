@@ -25,8 +25,17 @@
         <nuxt-link
           tag="li"
           to="/job-recruit"
-          active-class="active-link">
+          active-class="active-link"
+          id="text"
+          @mouseenter="showRecruit"
+          @mouseleave="resetRecruit">
           <a>职位招聘</a>
+          <ul
+            class="recruit-list"
+            ref="recruitList">
+            <li>招聘帖</li>
+            <li>发布招聘</li>
+          </ul>
         </nuxt-link>
         <nuxt-link
           tag="li"
@@ -39,10 +48,14 @@
     <div class="company">
       <!-- <company-icon /> -->
       <user />
-      <el-button
-        type="primary"
-        icon="el-icon-phone-outline"
-        class="recruit">发布招聘</el-button>
+      <nuxt-link
+        tag="span"
+        to="/job-recruit">
+        <el-button
+          type="primary"
+          icon="el-icon-phone-outline"
+          class="recruit">写帖子</el-button>
+      </nuxt-link>
     </div>
   </div>
 </template>
@@ -54,11 +67,23 @@ export default {
   components: {
     CompanyIcon,
     User
+  },
+  methods: {
+    showRecruit() {
+      alert(1);
+      this.$refs.recruitList.style.opacity = 1;
+      this.$refs.recruitList.style.bottom = '-120px';
+    },
+    resetRecruit() {
+      alert(1);
+      this.$refs.recruitList.style.opacity = 0;
+      this.$refs.recruitList.style.bottom = '-150px';
+    }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .top-header {
     display: flex;
     flex-direction: row;
@@ -137,4 +162,30 @@ export default {
   .recruit {
     margin-right: 30px;
   }
+
+  .recruit-list {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    list-style: none;
+    position: absolute;
+    width: 120px;
+    height: 120px;
+    bottom: -150px;
+    opacity: 0;
+    /* width2 - width1 / 2 */
+    margin-left: -30px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.81);
+    transition: all 0.4s;
+  }
+
+  // #job-recruit:hover {
+  //   color: #fff;
+  //   .recruit-list {
+  //     opacity: 1;
+  //     bottom: -120px;
+  //   }
+  // }
+
 </style>
