@@ -13,6 +13,7 @@
     "precommit": "npm run lint"
   },
   "dependencies": {
+    "2015": "0.0.1",
     "@nuxtjs/axios": "5.0.0",
     "axios": "0.18.0",
     "babel-preset-es2015": "6.24.1",

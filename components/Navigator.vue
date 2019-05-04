@@ -25,25 +25,17 @@
         <nuxt-link
           tag="li"
           to="/job-recruit"
-          active-class="active-link">
+          active-class="active-link"
+          id="text"
+          @mouseenter="showRecruit"
+          @mouseleave="resetRecruit">
           <a>职位招聘</a>
-<<<<<<< HEAD
-<<<<<<< HEAD
-          <ul class="recruit-list">
+          <ul
+            class="recruit-list"
+            ref="recruitList">
             <li>招聘帖</li>
             <li>发布招聘</li>
           </ul>
-=======
-=======
->>>>>>> 770b53ab7e3f28ddba99779d457ccb9f4c15f689
-          <!-- <ul class="recruit-list">
-            <li>招聘帖</li>
-            <li>发布招聘</li>
-          </ul> -->
-<<<<<<< HEAD
->>>>>>> 拉代码
-=======
->>>>>>> 770b53ab7e3f28ddba99779d457ccb9f4c15f689
         </nuxt-link>
         <nuxt-link
           tag="li"
@@ -75,11 +67,23 @@ export default {
   components: {
     CompanyIcon,
     User
+  },
+  methods: {
+    showRecruit() {
+      alert(1);
+      this.$refs.recruitList.style.opacity = 1;
+      this.$refs.recruitList.style.bottom = '-120px';
+    },
+    resetRecruit() {
+      alert(1);
+      this.$refs.recruitList.style.opacity = 0;
+      this.$refs.recruitList.style.bottom = '-150px';
+    }
   }
 }
 </script>
 
-<style scoped>
+<style lang="scss" scoped>
   .top-header {
     display: flex;
     flex-direction: row;
@@ -160,25 +164,28 @@ export default {
   }
 
   .recruit-list {
-<<<<<<< HEAD
-<<<<<<< HEAD
     display: flex;
+    flex-direction: column;
+    justify-content: space-around;
     list-style: none;
     position: absolute;
     width: 120px;
-    height: 100px;
-    bottom: -100px;
+    height: 120px;
+    bottom: -150px;
+    opacity: 0;
     /* width2 - width1 / 2 */
     margin-left: -30px;
     text-align: center;
     background: rgba(255, 255, 255, 0.81);
-=======
-    list-style: none;
-    position: absolute;
->>>>>>> 拉代码
-=======
-    list-style: none;
-    position: absolute;
->>>>>>> 770b53ab7e3f28ddba99779d457ccb9f4c15f689
+    transition: all 0.4s;
   }
+
+  // #job-recruit:hover {
+  //   color: #fff;
+  //   .recruit-list {
+  //     opacity: 1;
+  //     bottom: -120px;
+  //   }
+  // }
+
 </style>

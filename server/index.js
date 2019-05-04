@@ -15,7 +15,7 @@ app.use(bodyParser({
 app.use(json())
 
 const connection = require('./dbs/index')
-connection.connect()
+// connection.connect()
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
