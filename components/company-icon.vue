@@ -10,6 +10,7 @@
 </script>
 
 <style>
+  /* 不设置scoped,原因是该组件是多余的，设置scoped将有问题，有空整合 */
   .icon-container {
     z-index: 120;
     position: relative;
@@ -21,9 +22,5 @@
     transition: all .4s;
     z-index: 120;
   }
-  .icon:hover {
-    /* margin-top: 50px;
-    width: 80px;
-    height: 80px; */
-  }
+
 </style>
