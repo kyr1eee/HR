@@ -25,7 +25,7 @@
 </template>
 
 <script>
-import E from 'wangeditor';
+// import E from 'wangeditor';
 export default {
   name: 'Editor',
   components: {
@@ -37,14 +37,16 @@ export default {
     }
   },
   mounted() {
-    let editor = new E(this.$refs.editor);
+    // ssr 下刷新报错,采用require引入模块解决
+    const E = require('wangeditor');
+    const editor = new E(this.$refs.editor);
     editor.customConfig.onchange = (html) => {
       this.editorContent = html
     }
     editor.create();
     // 修改文本域
     let textArea = document.querySelector(".w-e-text-container");
-    textArea.style.height = '600px';
+    textArea.style.height = '400px';
     textArea = null;
   },
   methods: {
