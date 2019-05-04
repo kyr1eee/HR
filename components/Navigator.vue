@@ -28,16 +28,22 @@
           active-class="active-link">
           <a>职位招聘</a>
 <<<<<<< HEAD
+<<<<<<< HEAD
           <ul class="recruit-list">
             <li>招聘帖</li>
             <li>发布招聘</li>
           </ul>
 =======
+=======
+>>>>>>> 770b53ab7e3f28ddba99779d457ccb9f4c15f689
           <!-- <ul class="recruit-list">
             <li>招聘帖</li>
             <li>发布招聘</li>
           </ul> -->
+<<<<<<< HEAD
 >>>>>>> 拉代码
+=======
+>>>>>>> 770b53ab7e3f28ddba99779d457ccb9f4c15f689
         </nuxt-link>
         <nuxt-link
           tag="li"
@@ -155,6 +161,7 @@ export default {
 
   .recruit-list {
 <<<<<<< HEAD
+<<<<<<< HEAD
     display: flex;
     list-style: none;
     position: absolute;
@@ -169,5 +176,9 @@ export default {
     list-style: none;
     position: absolute;
 >>>>>>> 拉代码
+=======
+    list-style: none;
+    position: absolute;
+>>>>>>> 770b53ab7e3f28ddba99779d457ccb9f4c15f689
   }
 </style>
