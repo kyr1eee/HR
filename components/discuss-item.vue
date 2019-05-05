@@ -35,7 +35,7 @@ export default {
     },
     author: {
       type: String,
-      default: ''
+      default: '毛'
     },
     replyCount: {
       type: String,
@@ -53,6 +53,10 @@ export default {
       type: String,
       default: ''
     }
+  },
+  mounted() {
+    // 通过this获取props
+    // console.log(this.author);
   }
 }
 </script>

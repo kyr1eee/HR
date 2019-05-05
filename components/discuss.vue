@@ -12,6 +12,7 @@
     </div>
     <div class="discuss-content">
       <li
+        @click="selectUser(item)"
         v-for="(item, index) in test"
         :key="index">
         <discuss-item />
@@ -30,9 +31,15 @@ export default {
   },
   data() {
     return {
-      test: [1,1,1,1,1,11,1,1,1,1,1,1,1,1,1],
+      test: [1,12,13,11,21,121,13,14,1221,134,431,3131,4131,161,231],
       t: [1,1]
     };
+  },
+  methods: {
+    selectUser(item) {
+      // 父组件指定子路由参数
+      this.$router.push(`/user/${item}`);
+    }
   }
 }
 </script>
