@@ -5,6 +5,7 @@ const { Nuxt, Builder } = require('nuxt')
 
 import bodyParser from 'koa-bodyparser'
 import json from 'koa-json'
+import post from './interface/job-post'
 //import company from './interface/company'
 
 const app = new Koa()
@@ -15,7 +16,7 @@ app.use(bodyParser({
 app.use(json())
 
 const connection = require('./dbs/index')
-// connection.connect()
+connection.connect()
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
@@ -39,6 +40,7 @@ async function start() {
   }
 
   //app.use(company.routes()).use(company.allowedMethods())
+  app.use(post.routes()).use(post.allowedMethods())
 
   app.use(ctx => {
     ctx.status = 200

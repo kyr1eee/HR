@@ -32,6 +32,15 @@ export default {
   mounted() {
     this.getDiscuss();
     this.$refs.main.style.minHeight = window.innerHeight - 240 + 'px';
+    let self = this
+    self.$axios.get('/job-post/find').then(({status, data}) => {
+      if (status===200) {
+        console.log("success")
+        console.log(data)
+      }else {
+        self.error = `服务器出错，错误码:${status}`
+      }
+    })
   },
   methods: {
     _scroll: function() {
