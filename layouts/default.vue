@@ -62,8 +62,8 @@ body {
   background-color: #f4f5f5;
 }
 
-#header {
-  position: relative;
+#app {
+  // position: relative;
 }
 #router-view {
   display: flex;

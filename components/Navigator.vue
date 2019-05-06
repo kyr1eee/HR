@@ -14,34 +14,34 @@
           tag="li"
           to="/job-post"
           active-class="active-link">
-          <a>求职区</a>
+          <span>求职区</span>
         </nuxt-link>
         <nuxt-link
           tag="li"
           to="/job-manage"
           active-class="active-link">
-          <a>职位管理</a>
+          <span>职位管理</span>
         </nuxt-link>
         <nuxt-link
           tag="li"
           to="/job-recruit"
-          active-class="active-link"
-          id="text"
-          @mouseenter="showRecruit"
-          @mouseleave="resetRecruit">
-          <a>职位招聘</a>
+          active-class="active-link">
+          <span>
+            职位招聘
+          </span>
+          <!-- 太麻烦，放弃
           <ul
             class="recruit-list"
             ref="recruitList">
-            <li>招聘帖</li>
-            <li>发布招聘</li>
-          </ul>
+            <a>招聘帖</a>
+            <a>发布招聘</a>
+          </ul> -->
         </nuxt-link>
         <nuxt-link
           tag="li"
           to="/resume-manage"
           active-class="active-link">
-          <a>简历管理</a>
+          <span>简历管理</span>
         </nuxt-link>
       </ul>
     </nav>
@@ -50,7 +50,7 @@
       <user />
       <nuxt-link
         tag="span"
-        to="/job-recruit">
+        to="/write-post">
         <el-button
           type="primary"
           icon="el-icon-phone-outline"
@@ -69,16 +69,14 @@ export default {
     User
   },
   methods: {
-    showRecruit() {
-      alert(1);
-      this.$refs.recruitList.style.opacity = 1;
-      this.$refs.recruitList.style.bottom = '-120px';
-    },
-    resetRecruit() {
-      alert(1);
-      this.$refs.recruitList.style.opacity = 0;
-      this.$refs.recruitList.style.bottom = '-150px';
-    }
+    // showRecruit() {
+    //   this.$refs.recruitList.style.opacity = 1;
+    //   this.$refs.recruitList.style.bottom = '-120px';
+    // },
+    // resetRecruit() {
+    //   this.$refs.recruitList.style.opacity = 0;
+    //   this.$refs.recruitList.style.bottom = '-150px';
+    // }
   }
 }
 </script>
@@ -131,22 +129,22 @@ export default {
     padding: 6px;
   }
 
-  a {
+  span {
     text-decoration: none;
     color: #423d3d;
   }
-  .nav-list li a {
+  .nav-list li span {
     display: inline-block;
     transition: all 0.6s;
   }
 
-  .nav-list a:hover {
+  .nav-list span:hover {
     cursor: pointer;
     color: #187aff;
     transform: scale(1.2);
   }
 
-  .nav-list .active-link a {
+  .nav-list .active-link span {
     color: #187aff;
   }
 
@@ -180,12 +178,6 @@ export default {
     transition: all 0.4s;
   }
 
-  // #job-recruit:hover {
-  //   color: #fff;
-  //   .recruit-list {
-  //     opacity: 1;
-  //     bottom: -120px;
-  //   }
-  // }
+
 
 </style>
