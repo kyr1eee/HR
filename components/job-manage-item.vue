@@ -33,6 +33,7 @@
         <el-tag type="success">投递：99+</el-tag>
       </div>
     </div>
+    <el-divider />
   </div>
 </template>
 

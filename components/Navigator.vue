@@ -22,21 +22,21 @@
           active-class="active-link">
           <span>职位管理</span>
         </nuxt-link>
-        <nuxt-link
+        <!-- <nuxt-link
           tag="li"
           to="/job-recruit"
           active-class="active-link">
           <span>
             职位招聘
           </span>
-          <!-- 太麻烦，放弃
+          太麻烦，放弃
           <ul
             class="recruit-list"
             ref="recruitList">
             <a>招聘帖</a>
             <a>发布招聘</a>
-          </ul> -->
-        </nuxt-link>
+          </ul>
+        </nuxt-link> -->
         <nuxt-link
           tag="li"
           to="/resume-manage"

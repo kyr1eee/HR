@@ -2,6 +2,7 @@
   <div class="main">
     <div class="wrapper">
       <title-divider title="职位管理" />
+      <post-job />
       <div class="job-manage-list">
         <li
           v-for="(item, index) in test"
@@ -16,10 +17,12 @@
 <script>
 import TitleDivider from '~/components/title-divider';
 import JobManageItem from '~/components/job-manage-item';
+import PostJob from '~/components/post-job';
 export default {
   components: {
     TitleDivider,
-    JobManageItem
+    JobManageItem,
+    PostJob
   },
   data() {
     return {

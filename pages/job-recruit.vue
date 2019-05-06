@@ -1,16 +1,16 @@
 <template>
   <div class="main">
-    <div class="wrapper">
-      <title-divider title="职位管理" />
-    </div>
+    <job-table />
   </div>
 </template>
 
 <script>
 import TitleDivider from '~/components/title-divider';
+import JobTable from '~/components/job-table';
 export default {
   components: {
-    TitleDivider
+    TitleDivider,
+    JobTable
   }
 }
 </script>
