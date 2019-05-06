@@ -5,7 +5,7 @@ const { Nuxt, Builder } = require('nuxt')
 
 import bodyParser from 'koa-bodyparser'
 import json from 'koa-json'
-import company from './interface/company'
+//import company from './interface/company'
 
 const app = new Koa()
 
@@ -38,7 +38,7 @@ async function start() {
     await nuxt.ready()
   }
 
-  app.use(company.routes()).use(company.allowedMethods())
+  //app.use(company.routes()).use(company.allowedMethods())
 
   app.use(ctx => {
     ctx.status = 200
