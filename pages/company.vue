@@ -67,24 +67,24 @@
     layout: 'blank',
     methods: {
       submitForm(formName) {
-        let self = this
-        this.$refs[formName].validate((valid) => {
-          if (valid) {
-            self.$axios.post('/company/submit', {
-              name: self.ruleForm.name,
-              num: self.ruleForm.num,
-              address: self.ruleForm.address,
-              desc: self.ruleForm.desc
-            }).then(({status, data}) => {
-              if (status===200) {
-                location.href='/'
-                console.log("success")
-              }else {
-                self.error = `服务器出错，错误码:${status}`
-              }
-            })
-          }
-        });
+        // let self = this
+        // this.$refs[formName].validate((valid) => {
+        //   if (valid) {
+        //     self.$axios.post('/company/submit', {
+        //       name: self.ruleForm.name,
+        //       num: self.ruleForm.num,
+        //       address: self.ruleForm.address,
+        //       desc: self.ruleForm.desc
+        //     }).then(({status, data}) => {
+        //       if (status===200) {
+        //         location.href='/'
+        //         console.log("success")
+        //       }else {
+        //         self.error = `服务器出错，错误码:${status}`
+        //       }
+        //     })
+        //   }
+        // });
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

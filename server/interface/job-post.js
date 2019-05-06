@@ -3,18 +3,17 @@ import Router from 'koa-router'
 const sql = require('../dbs/index')
 
 let router = new Router({
-  prefix: '/company'
+  prefix: '/job-post'
 })
 
-router.post('/submit', async (ctx) => {
-  let params = ctx.request.body
+router.get('/find', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
-    sql.query('insert into companies(name,info) values(?,?)',[params.name,params.desc],(error,result,filed)=>{
+    sql.query('select * from posts where type = 1', (error,result,filed)=>{
         if (error) return error;
         resolve(result)
     })
   })
-  ctx.response.body={status:1,msg:'操作成功',data:res}
+  ctx.response.body={status:200,msg:'操作成功',data:res}
 })
 
 export default router
