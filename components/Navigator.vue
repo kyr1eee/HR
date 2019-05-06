@@ -12,7 +12,7 @@
       <ul class="nav-list">
         <nuxt-link
           tag="li"
-          to="/job-post"
+          to="/discuss"
           active-class="active-link">
           <span>求职区</span>
         </nuxt-link>

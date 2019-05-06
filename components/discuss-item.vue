@@ -3,9 +3,14 @@
     <div class="wrapper">
       <img
         class="icon"
-        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1391408179,2191640814&fm=26&gp=0.jpg" >
+        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1391408179,2191640814&fm=26&gp=0.jpg"
+        @click="selectUser">
       <div class="content">
-        <div class="title">震惊!美女半夜不睡觉居然在...</div>
+        <div
+          class="title"
+          @click="discussDetail">
+          震惊!美女半夜不睡觉居然在...
+        </div>
         <div class="bottom">
           <div class="autor">汕大阿毛  于  2019-05-03 03:19:05  发表</div>
           <div class="data">
@@ -25,6 +30,10 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      default: '1jk1j3'
+    },
     icon: {
       type: String,
       default: ''
@@ -57,6 +66,15 @@ export default {
   mounted() {
     // 通过this获取props
     // console.log(this.author);
+  },
+  methods: {
+    discussDetail() {
+      this.$router.push(`/discuss/${this.id}`);
+    },
+    selectUser() {
+      // 父组件指定子路由参数
+      this.$router.push(`/user/${this.author}`);
+    }
   }
 }
 </script>
@@ -90,6 +108,10 @@ export default {
         font-size: 15px;
       }
 
+      .title:hover {
+        color:#2867dd;
+        cursor: pointer;
+      }
       .bottom {
         display: flex;
         justify-content: space-between;

@@ -15,9 +15,9 @@
 
 </template>
 <script>
-import Discuss from '../components/discuss';
-import HotPost from '../components/hot-post';
-import HotTopic from '../components/hot-topic';
+import Discuss from '~/components/discuss';
+import HotPost from '~/components/hot-post';
+import HotTopic from '~/components/hot-topic';
 export default {
   components: {
     Discuss,
