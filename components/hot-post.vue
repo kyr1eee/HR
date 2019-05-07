@@ -7,6 +7,10 @@
           v-for="(item, index) in data"
           :key="index">
           <p>{{ item.title }}</p>
+          <div class="title-bottom">
+            <span>发表于 {{ translateTime(item.updatedAt) }}</span>
+            <span>回复(6)</span>
+          </div>
           <el-divider />
         </li>
       </div>
@@ -26,6 +30,9 @@ export default {
       default: () => []
     }
   },
+  computed: {
+
+  },
   created() {
     // this.getDiscuss();
   },
@@ -33,7 +40,16 @@ export default {
 
   },
   methods: {
-
+    translateTime(oldTime) {
+      const time = new Date(oldTime);
+      const year = time.getFullYear();
+      const month = (time.getMonth() + 1) < 10 ? '0' + (time.getMonth() + 1) : (time.getMonth() + 1);
+      const date = time.getDate() < 10 ? '0' + time.getDate() : time.getDate();
+      const hours = time.getHours() < 10 ? '0' + time.getHours()  : time.getHours();
+      const minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
+      const seconds = time.getSeconds() < 10 ? '0' + time.getSeconds() : time.getSeconds();
+      return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
+    }
   }
 }
 </script>
@@ -51,6 +67,12 @@ export default {
 
     .post-content {
       width: 90%;
+
+      .title-bottom {
+        display: flex;
+        justify-content: space-between;
+        font-size: 12px;
+      }
     }
   }
 }

@@ -12,7 +12,7 @@
           {{ data.title }}
         </div>
         <div class="bottom">
-          <div class="autor">{{ translateTime }}  发表</div>
+          <div class="autor">发表于 {{ translateTime }}</div>
           <div class="data">
             <span>回复 0</span>
             <el-divider direction="vertical" />
@@ -29,6 +29,8 @@
 
 <script>
 export default {
+  components: {
+  },
   props: {
     data: {
       type: Object,
@@ -50,15 +52,17 @@ export default {
   mounted() {
     // 通过this获取props
     // console.log(this.author);
-    console.log(this.data)
   },
   methods: {
     discussDetail() {
-      this.$router.push(`/discuss/${this.id}`);
+      this.$router.push({
+        path: '/discuss/detail',
+        query: { pid: this.data.id },
+      });
     },
     selectUser() {
       // 父组件指定子路由参数
-      this.$router.push(`/user/${this.author}`);
+      this.$router.push(`/user/${this.data.userId}`);
     }
   }
 }

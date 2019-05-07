@@ -6,7 +6,6 @@ const { Nuxt, Builder } = require('nuxt')
 import bodyParser from 'koa-bodyparser'
 import json from 'koa-json'
 import post from './interface/discuss'
-import post from './interface/job-post'
 import jobmanage from './interface/job-manage'
 //import company from './interface/company'
 
@@ -21,7 +20,7 @@ const connection = require('./dbs/index')
 connection.connect()
 
 const dbconfig = require('./dbs/config')
-dbconfig.connect()
+// dbconfig.connect()
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')
