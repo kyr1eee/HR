@@ -41,6 +41,14 @@ export default {
         self.error = `服务器出错，错误码:${status}`
       }
     })
+    self.$axios.get('/job-manage/findAll').then(({status, data}) => {
+      if (status===200) {
+        console.log("success")
+        console.log(data)
+      }else {
+        self.error = `服务器出错，错误码:${status}`
+      }
+    })
   },
   methods: {
     _scroll: function() {
