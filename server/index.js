@@ -5,7 +5,7 @@ const { Nuxt, Builder } = require('nuxt')
 
 import bodyParser from 'koa-bodyparser'
 import json from 'koa-json'
-import post from './interface/job-post'
+import post from './interface/discuss'
 //import company from './interface/company'
 
 const app = new Koa()

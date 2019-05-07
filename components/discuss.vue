@@ -12,9 +12,9 @@
     </div>
     <div class="discuss-content">
       <li
-        v-for="(item, index) in test"
+        v-for="(item, index) in data"
         :key="index">
-        <discuss-item />
+        <discuss-item :data="item"/>
       </li>
     </div>
   </div>
@@ -28,11 +28,24 @@ export default {
     TitleDivider,
     DiscussItem
   },
+  props: {
+    data: {
+      type: Array,
+      default: () => []
+    }
+  },
   data() {
     return {
-      test: [1,12,13,11,21,121,13,14,1221,134,431,3131,4131,161,231],
-      t: [1,1]
+
     };
+  },
+  created() {
+  },
+  mounted() {
+
+    setTimeout(() => {
+      console.log('discuss', this.data);
+    }, 100)
   },
   methods: {
 

@@ -20,7 +20,6 @@ import User from '../components/User';
 import throtte from '../common/throttle';
 import MyMenu from '../components/menu';
 import MyFooter from '../components/my-footer';
-import {getDiscuss} from '../server/api/discuss';
 export default {
   components: {
     Navigator,
@@ -30,17 +29,7 @@ export default {
     MyFooter,
   },
   mounted() {
-    this.getDiscuss();
     this.$refs.main.style.minHeight = window.innerHeight - 240 + 'px';
-    let self = this
-    self.$axios.get('/job-post/find').then(({status, data}) => {
-      if (status===200) {
-        console.log("success")
-        console.log(data)
-      }else {
-        self.error = `服务器出错，错误码:${status}`
-      }
-    })
   },
   methods: {
     _scroll: function() {
@@ -52,13 +41,6 @@ export default {
     },
     throteScroll: function() {
       throtte(this._scroll, 300);
-    },
-    getDiscuss() {
-      getDiscuss().then(res => {
-        console.log('Get Discuss: ', res);
-      }).catch(e => {
-        console.error('Get Discuss Failed: ',e);
-      })
     }
   }
 }

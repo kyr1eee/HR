@@ -4,9 +4,9 @@
     <div class="post-wrapper">
       <div class="post-content">
         <li
-          v-for="(item, index) in test"
+          v-for="(item, index) in data"
           :key="index">
-          <p>这是一个挺长的标题哦</p>
+          <p>{{ item.title }}</p>
           <el-divider />
         </li>
       </div>
@@ -20,10 +20,20 @@ export default {
   components: {
     TitleDivider,
   },
-  data() {
-    return {
-      test: [1,1,1,1,1,1,11,1,1,1,1,1]
+  props: {
+    data: {
+      type: Array,
+      default: () => []
     }
+  },
+  created() {
+    // this.getDiscuss();
+  },
+  mounted() {
+
+  },
+  methods: {
+
   }
 }
 </script>

@@ -9,10 +9,10 @@
         <div
           class="title"
           @click="discussDetail">
-          震惊!美女半夜不睡觉居然在...
+          {{ data.title }}
         </div>
         <div class="bottom">
-          <div class="autor">汕大阿毛  于  2019-05-03 03:19:05  发表</div>
+          <div class="autor">{{ translateTime }}  发表</div>
           <div class="data">
             <span>回复 0</span>
             <el-divider direction="vertical" />
@@ -30,42 +30,27 @@
 <script>
 export default {
   props: {
-    id: {
-      type: String,
-      default: '1jk1j3'
-    },
-    icon: {
-      type: String,
-      default: ''
-    },
-    title: {
-      type: String,
-      default: ''
-    },
-    author: {
-      type: String,
-      default: '毛'
-    },
-    replyCount: {
-      type: String,
-      default: ''
-    },
-    starCount: {
-      type: String,
-      default: ''
-    },
-    readCount: {
-      type: String,
-      default: ''
-    },
-    date: {
-      type: String,
-      default: ''
+    data: {
+      type: Object,
+      default: null
+    }
+  },
+  computed: {
+    translateTime() {
+      const time = new Date(this.data.updatedAt);
+      const year = time.getFullYear();
+      const month = (time.getMonth() + 1) < 10 ? '0' + (time.getMonth() + 1) : (time.getMonth() + 1);
+      const date = time.getDate() < 10 ? '0' + time.getDate() : time.getDate();
+      const hours = time.getHours() < 10 ? '0' + time.getHours()  : time.getHours();
+      const minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
+      const seconds = time.getSeconds() < 10 ? '0' + time.getSeconds() : time.getSeconds();
+      return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
     }
   },
   mounted() {
     // 通过this获取props
     // console.log(this.author);
+    console.log(this.data)
   },
   methods: {
     discussDetail() {

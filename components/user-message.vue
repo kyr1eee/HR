@@ -36,11 +36,11 @@ export default {
     ul {
 
       li {
-          display: flex;
-          align-items: center;
-          height: 70px;
-          margin-left: 75px;
-          font-size: 16px;
+        display: flex;
+        align-items: center;
+        height: 70px;
+        margin-left: 75px;
+        font-size: 16px;
       }
     }
   }

@@ -3,10 +3,10 @@ import Router from 'koa-router'
 const sql = require('../dbs/index')
 
 let router = new Router({
-  prefix: '/job-post'
+  prefix: '/api'
 })
 
-router.get('/find', async (ctx) => {
+router.get('/discuss', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
     sql.query('select * from posts where type = 1', (error,result,filed)=>{
         if (error) return error;
