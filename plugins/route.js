@@ -11,7 +11,7 @@ export default ({ app }) => {
       if (data.code === 0) {
         window.localStorage.setItem('isLogin', true)
         //console.log("1111111111111111111:"+store.getters.isLogin)
-        store.commit('loginStatus', true)
+        app.store.commit('loginStatus', true)
         const route = to
         delete route.query.auth_token
         next(route)
@@ -22,16 +22,16 @@ export default ({ app }) => {
     const isLogin = window.localStorage.getItem('isLogin')
     // console.log(`isLogin=${isLogin}`)
     if (isLogin) {
-      if (!store.getters.user) {
+      if (!app.store.getters.user) {
         const result = await getUserInfo()
         // 获取用户信息是否成功，并且用户的等级大于5
         if (result.code === 0 && (result.data.role >= 4)) {
-          store.commit('setUser', result.data)
-          store.commit('loginStatus', true)
+          app.store.commit('setUser', result.data)
+          app.store.commit('loginStatus', true)
         } else {
           window.localStorage.removeItem('isLogin')
-          store.commit('setUser', null)
-          store.commit('loginStatus', false)
+          app.store.commit('setUser', null)
+          app.store.commit('loginStatus', false)
           window.location.href = '/'
         }
       }
@@ -40,11 +40,11 @@ export default ({ app }) => {
       const data = await getLoginStatus()
       if (data.code === 0) {
         window.localStorage.setItem('isLogin', true)
-        store.commit('loginStatus', true)
-        if (!store.getters.user) {
+        app.store.commit('loginStatus', true)
+        if (!app.store.getters.user) {
           const rs = await getUserInfo()
           if (rs.code === 0) {
-            store.commit('setUser', rs.data)
+            app.store.commit('setUser', rs.data)
           }
         }
         next()

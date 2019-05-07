@@ -38,7 +38,7 @@ module.exports = {
   */
   plugins: [
     '@/plugins/element-ui',
-    //{src: '@/plugins/route.js', ssr: false}
+    {src: '@/plugins/route.js', ssr: false}
   ],
 
   /*
