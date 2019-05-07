@@ -10,5 +10,5 @@ export async function getUserInfo() {
 }
 
 // export async function posts() {
-//   const re = await axios.post('/')
+//   const re = await axios.post('/posts')
 // }

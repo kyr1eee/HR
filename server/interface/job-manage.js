@@ -16,16 +16,6 @@ router.get('/findAll', async (ctx) => {
   ctx.response.body={status:200,msg:'操作成功',data:res}
 })
 
-router.get('/findOne', async (ctx) => {
-  let res=await new Promise((resolve,reject)=>{
-    sql.query('select * from jobinfos where id = 1', (error,result,filed)=>{
-        if (error) return error;
-        resolve(result)
-    })
-  })
-  ctx.response.body={status:200,msg:'操作成功',data:res}
-})
-
 router.post('/submit', async (ctx) => {
   let params = ctx.request.body
   let res = await new Promise((resolve, reject) => {
