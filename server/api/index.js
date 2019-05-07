@@ -6,7 +6,7 @@ export async function getLoginStatus() {
   return res.data
 }
 export async function getUserInfo() {
-  const rsp = await axios.get('/loginStatus')
+  const rsp = await axios.get('/getUserInfo')
   return rsp.data
 }
 
@@ -15,4 +15,9 @@ export async function getDiscuss() {
   const url = '/api/discuss';
   return Http.get(url);
 }
+
+
+// export async function posts() {
+//   const re = await axios.post('/posts')
+// }
 
