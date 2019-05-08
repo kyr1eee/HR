@@ -21,12 +21,14 @@ const store = () => new Vuex.Store({
   state: {
     isLogin: false, // 登录状态
     user: null, // 登录用户信息
-    pageUser: null // 普通用户信息
+    pageUser: null, // 普通用户信息
+    post: [], // 帖子数据
   },
   getters: {
     isLogin: (state) => state.isLogin,
     user: (state) => state.user,
-    pageUser: (state) => state.pageUser
+    pageUser: (state) => state.pageUser,
+    post: (state) => state.post
   },
   mutations: {
     loginStatus (state, payload) {
@@ -37,8 +39,12 @@ const store = () => new Vuex.Store({
     },
     setPageUser (state, payload) {
       state.pageUser = payload
+    },
+    setPost(state, payload) {
+      state.post = payload
     }
   },
+  // 异步操作，提交mutations
   actions: {
   }
 })

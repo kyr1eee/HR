@@ -52,6 +52,9 @@ export default {
   mounted() {
     // 通过this获取props
     // console.log(this.author);
+    setTimeout(() => {
+      console.log('item',this.data)
+    },200);
   },
   methods: {
     discussDetail() {

@@ -1,25 +1,34 @@
 <template>
   <div>
-    <discuss-detail :data="data"/>
+    <discuss-detail :data="postItem"/>
   </div>
 </template>
 
 <script>
 import DiscussDetail from '~/components/discuss-detail';
+import { mapGetters } from 'vuex';
 export default {
   components: {
     DiscussDetail
   },
-  props: {
-    data: {
-      type: Object,
-      default: null
+  data() {
+    return {
+      postItem: null
     }
   },
-  mounted() {
-    setTimeout(() => {
-      console.log('子路由',this.$route.params);
-    },300)
+  computed: {
+    ...mapGetters([
+      'post'
+    ])
+  },
+  created() {
+    this.postItem = this.setPostItem();
+  },
+  methods: {
+    setPostItem() {
+      let postItem = this.post.filter(item => item.id == this.$route.query.pid);
+      return postItem[0];
+    }
   }
 }
 </script>

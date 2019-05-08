@@ -1,6 +1,8 @@
 <template>
   <div class="main">
-    <div class="item-wrapper">
+    <div
+      class="item-wrapper"
+      @click="selectJob">
       <div class="item-left">
         <img
           class="hr-icon"
@@ -39,7 +41,14 @@
 
 <script>
 export default {
-
+  methods: {
+    selectJob() {
+      this.$router.push({
+        path: '/job-manage/detail',
+        query: { job : 'Web前端开发' }
+      })
+    }
+  }
 }
 </script>
 
@@ -50,6 +59,10 @@ export default {
     justify-content: space-around;
     align-items: center;
     height: 100px;
+
+    &:hover {
+      cursor: pointer;
+    }
 
     .hr-icon {
       width: 70px;

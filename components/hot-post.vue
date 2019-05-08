@@ -6,7 +6,7 @@
         <li
           v-for="(item, index) in data"
           :key="index">
-          <p>{{ item.title }}</p>
+          <p @click="selectPost(item)">{{ item.title }}</p>
           <div class="title-bottom">
             <span>发表于 {{ translateTime(item.updatedAt) }}</span>
             <span>回复(6)</span>
@@ -49,7 +49,13 @@ export default {
       const minutes = time.getMinutes() < 10 ? '0' + time.getMinutes() : time.getMinutes();
       const seconds = time.getSeconds() < 10 ? '0' + time.getSeconds() : time.getSeconds();
       return `${year}-${month}-${date} ${hours}:${minutes}:${seconds}`;
-    }
+    },
+    selectPost(item) {
+      this.$router.push({
+        path: '/discuss/detail',
+        query: { pid: item.id }
+      })
+    },
   }
 }
 </script>
@@ -67,6 +73,11 @@ export default {
 
     .post-content {
       width: 90%;
+
+      p:hover {
+        cursor: pointer;
+        color: #f56c6c;
+      }
 
       .title-bottom {
         display: flex;

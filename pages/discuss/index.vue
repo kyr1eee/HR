@@ -19,6 +19,7 @@ import Discuss from '~/components/discuss';
 import HotPost from '~/components/hot-post';
 import HotTopic from '~/components/hot-topic';
 import { getDiscuss } from '~/server/api';
+import { mapMutations } from 'vuex';
 export default {
   components: {
     Discuss,
@@ -44,6 +45,7 @@ export default {
       getDiscuss().then(res => {
         // res -> Object, res.data -> Array
         this.discuss = res.data;
+        this.setPost(this.discuss);
         this.hotPost = this.getHotDiscuss(this.discuss);
         // console.log('discuss page created request',this.hotPost)
       }).catch(e => {
@@ -53,7 +55,10 @@ export default {
     getHotDiscuss(data) {
       let highLight = data.filter(item => item.highlight == 1);
       return highLight;
-    }
+    },
+    ...mapMutations({
+      setPost: 'setPost'
+    })
   }
 }
 </script>
