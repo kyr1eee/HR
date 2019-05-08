@@ -35,6 +35,12 @@ For detailed explanation on how things work, checkout [Nuxt.js docs](https://nux
 #### 启动服务
 1. service mysql start
 
+#### 开启远程连接
+1. 修改绑定地址：vi /etc/mysql/mysql.conf.d/mysqld.cnf,修改bind-address，将改行注释
+2. 设置root权限： grant all privileges on *.* to 'root'@'%' identified by '123456' with grant option;
+3. flush privileges;
+4. 查看是否成功: mysql -u root -p -> use mysql -> select user, host from user;
+
 #### 错误分析
 + ERROR 2002 (HY000): Can't connect to local MySQL server through socket '/tmp/mysql.sock' (2)
 1. 修改my.cnf: vi /etc/my.cnf 
