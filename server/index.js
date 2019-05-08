@@ -20,7 +20,7 @@ const connection = require('./dbs/index')
 connection.connect()
 
 const dbconfig = require('./dbs/config')
-// dbconfig.connect()
+dbconfig.connect()
 
 // Import and Set Nuxt.js options
 let config = require('../nuxt.config.js')

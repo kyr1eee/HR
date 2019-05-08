@@ -1,5 +1,6 @@
 <template>
   <div class="company">
+    <h1><i class="el-icon-office-building" />  公司认证:</h1>
     <el-form
       :model="ruleForm"
       :rules="rules"
@@ -12,7 +13,7 @@
         <el-input v-model="ruleForm.name">1</el-input>
       </el-form-item>
       <el-form-item
-        label="公司经营注册号"
+        label="经营注册号"
         prop="num">
         <el-input v-model="ruleForm.num">1</el-input>
       </el-form-item>
@@ -22,16 +23,32 @@
         <el-input v-model="ruleForm.address">1</el-input>
       </el-form-item>
       <el-form-item
+        label="公司业务"
+        prop="bussiness">
+        <el-input v-model="ruleForm.bussiness">1</el-input>
+      </el-form-item>
+      <el-form-item
+        label="公司性质"
+        prop="type">
+        <el-input v-model="ruleForm.type">1</el-input>
+      </el-form-item>
+      <el-form-item
+        label="公司人数"
+        prop="staff">
+        <el-input v-model="ruleForm.staff">1</el-input>
+      </el-form-item>
+      <el-form-item
         label="公司简介"
         prop="desc">
         <el-input
           type="textarea"
-          v-model="ruleForm.desc">1</el-input>
+          v-model="ruleForm.desc"
+          autosize>1</el-input>
       </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
-          @click="submitForm('ruleForm')">保存</el-button>
+          @click="submitForm('ruleForm')">提交</el-button>
         <el-button @click="resetForm('ruleForm')">取消</el-button>
       </el-form-item>
     </el-form>
@@ -46,6 +63,9 @@
           name: '',
           num: '',
           address: '',
+          bussiness: '',
+          type: '',
+          staff: '',
           desc: ''
         },
         rules: {
@@ -57,6 +77,15 @@
           ],
           address: [
             { required: true, message: '请填写公司地址', trigger: 'blur' }
+          ],
+          bussiness: [
+            { required: true, message: '请填写公司业务', trigger: 'blur' }
+          ],
+          type: [
+            { required: true, message: '请填写公司性质', trigger: 'blur'}
+          ],
+          staff: [
+            { required: true, message: '请填写公司人数', trigger: 'blur'}
           ],
           desc: [
             { required: true, message: '请填写公司简介', trigger: 'blur' }
@@ -98,8 +127,7 @@
     text-align: center
   }
   .company {
-    margin: 0 auto;
-    top: 200px;
-    width: 300px;
+    margin: 100px auto;
+    width: 600px;
   }
 </style>

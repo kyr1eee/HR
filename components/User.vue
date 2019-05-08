@@ -41,7 +41,6 @@ export default {
     };
   },
   mounted(){
-    console.log('ref', this.$refs.iconCompany);
   },
   methods: {
     iconMove() {

@@ -11,11 +11,22 @@
       <span>精华</span>
     </div>
     <div class="discuss-content">
+      <loading v-if="data.length === 0"/>
       <li
-        v-for="(item, index) in data"
+        v-for="(item, index) in currentData"
         :key="index">
         <discuss-item :data="item"/>
       </li>
+      <div
+        class="page"
+        v-show="data.length > 0">
+        <el-pagination
+          background
+          layout="prev, pager, next"
+          :total="data.length"
+          ref="page"
+          @current-change="selectPage" />
+      </div>
     </div>
   </div>
 </template>
@@ -23,10 +34,12 @@
 <script>
 import TitleDivider from './title-divider';
 import DiscussItem from './discuss-item';
+import Loading from './loading'
 export default {
   components: {
     TitleDivider,
-    DiscussItem
+    DiscussItem,
+    Loading
   },
   props: {
     data: {
@@ -36,19 +49,26 @@ export default {
   },
   data() {
     return {
-
+      currentPage: 1,
+      loaded: false,
     };
+  },
+  computed: {
+    currentData: function() {
+      return this.data.slice(this.currentPage * 10 - 10, this.currentPage * 10 - 1);
+    }
   },
   created() {
   },
   mounted() {
 
-    setTimeout(() => {
-      console.log('discuss', this.data);
-    }, 100)
+
   },
   methods: {
-
+    // current-page事件获取当前页码
+    selectPage(page) {
+      this.currentPage = page;
+    }
   }
 }
 </script>
@@ -80,6 +100,10 @@ export default {
       margin: 0;
       padding: 0;
       width: 90%;
+    }
+
+    .page {
+      padding-bottom: 30px;
     }
   }
 }
