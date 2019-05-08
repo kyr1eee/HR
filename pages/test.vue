@@ -5,8 +5,7 @@
 </template>
 
 <script>
-import {getDiscuss} from '../server/api/discuss';
-import {getUserById,posts,getUserInfo} from '../server/api/index';
+import {getUserById,posts,getUserInfo, getDiscuss} from '../server/api/index';
 export default {
   mounted() {
     this.getDiscuss();
