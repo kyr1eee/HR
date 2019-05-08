@@ -4,7 +4,7 @@ const config = mysql.createConnection({
   host: '47.106.247.211',
   port: 3306,
   user: 'root',
-  password: '781246808',
+  password: '123456',
   database: 'HR'
 })
 

@@ -12,7 +12,7 @@ export default ({ app }) => {
         window.localStorage.setItem('isLogin', true)
         //console.log("1111111111111111111:"+store.getters.isLogin)
         app.store.commit('loginStatus', true)
-        const route = to
+        const route = {...to, replace: true}
         delete route.query.auth_token
         next(route)
       } else {
