@@ -10,7 +10,7 @@ export default {
   mounted() {
     this.getDiscuss();
     let self = this
-    self.$axios.get('/job-post/find').then(({status, data}) => {
+    self.$axios.get('/api/discuss').then(({status, data}) => {
       if (status===200) {
         console.log("success")
         console.log(data)
@@ -66,11 +66,15 @@ export default {
     //     console.error('Post posts Failed: ',e);
     //   })
       let self = this
-      self.$axios.post('/job-post/submit', {
-        userId: 15,
-        title: '腾讯春招正式开始啦',
-        content: '春招将于3月5日开始，3月31日截止，有兴趣的同学可以进入官网了解。',
-        type: 4
+      self.$axios.post('/job-manage/submit', {
+        coId: 3,
+        name: 'this.form.name',
+        place: 'this.form.locate',
+        salary: 'this.form.salary',
+        date: '2019-05-29T16:00:00.000Z',
+        top: 0,
+        workfare: 'this.form.type.join('-')',
+        req: 'this.form.desc'
       }).then(({status, data}) => {
       if (status===200) {
         console.log("success")

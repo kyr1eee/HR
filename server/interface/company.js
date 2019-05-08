@@ -30,7 +30,7 @@ router.post('/save', async (ctx) => {
 
 router.get('/infos', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
-    sql.query('select * from posts where id = 3', (error,result,filed)=>{
+    sql.query('select * from posts where id = 3;', (error,result,filed)=>{
         if (error) return error;
         resolve(result)
     })
