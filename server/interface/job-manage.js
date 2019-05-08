@@ -8,7 +8,7 @@ let router = new Router({
 
 router.get('/findAll', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
-    sql.query('select * from jobinfos', (error,result,filed)=>{
+    sql.query('select * from jobinfos;', (error,result,filed)=>{
         if (error) return error;
         resolve(result)
     })
@@ -19,7 +19,7 @@ router.get('/findAll', async (ctx) => {
 router.post('/submit', async (ctx) => {
   let params = ctx.request.body
   let res = await new Promise((resolve, reject) => {
-    sql.query('insert into jobinfos(coId,name,place,salary,date,top,workfare,require) values(?,?,?,?,?,?,?,?)',[3,params.name,params.place,params.salary,params.date,params.top,params.workfare,params.require],(error,result,filed)=>{
+    sql.query('insert into jobinfos(coId,name,place,salary,date,top,workfare,req) values(?,?,?,?,?,?,?,?);',[params.coId,params.name,params.place,params.salary,params.date,params.top,params.workfare,params.req],(error,result,filed)=>{
       if (error) return error;
       resolve(result)
     })
