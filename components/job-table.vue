@@ -11,33 +11,18 @@
             <el-input v-model="form.name" />
           </el-form-item>
           <el-form-item label="工作地点">
-            <el-select
-              v-model="form.region"
-              placeholder="请选择工作地点">
-              <el-option
-                label="区域一"
-                value="shanghai" />
-              <el-option
-                label="区域二"
-                value="beijing" />
-            </el-select>
+            <el-input v-model="form.locate" />
+          </el-form-item>
+          <el-form-item label="工作薪酬">
+            <el-input v-model="form.salary" />
           </el-form-item>
           <el-form-item label="截止时间">
             <el-col :span="11">
               <el-date-picker
                 type="date"
                 placeholder="选择日期"
-                v-model="form.date1"
+                v-model="form.date"
                 style="width: 100%;" />
-            </el-col>
-            <el-col
-              class="line"
-              :span="2">-</el-col>
-            <el-col :span="11">
-              <el-time-picker
-                placeholder="选择时间"
-                v-model="form.date2"
-                style="width: 100%;"/>
             </el-col>
           </el-form-item>
           <el-form-item label="置顶">
@@ -86,7 +71,10 @@
 </template>
 
 <script>
+  import { setJobMessage } from '~/server/api';
   import TitleDivider from './title-divider';
+  import axios from 'axios';
+  import Http from '~/server/http';
   export default {
     components: {
       TitleDivider
@@ -95,19 +83,31 @@
       return {
         form: {
           name: '',
-          region: '',
-          date1: '',
-          date2: '',
+          locate: '',
+          salary: '',
+          date: '',
           delivery: false,
           type: [],
-          resource: '',
           desc: ''
         }
       }
     },
     methods: {
       onSubmit() {
-        console.log('submit!');
+        console.log(this.form);
+        setJobMessage({
+          name: this.form.name,
+          place: this.form.locate,
+          salary: this.form.salary,
+          date: this.form.date,
+          top: Number(this.form.delivery),
+          workfare: this.form.type.join('-'),
+          req: this.form.desc
+        }).then(res => {
+          console.log('提交成功:',res)
+        }).catch(e => {
+          console.log('提交职位信息失败', e);
+        })
       }
     }
   }

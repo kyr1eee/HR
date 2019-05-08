@@ -3,7 +3,8 @@
     <div class="post-title">
       <el-input
         placeholder="请输入文章标题"
-        suffix-icon="el-icon-notebook-2" />
+        suffix-icon="el-icon-notebook-2"
+        v-model="postTitle" />
     </div>
     <div
       ref="editor"
@@ -11,13 +12,11 @@
       class="editor" />
     <div class="button-group">
       <el-button
-        @click="getContent"
+        @click="onSubmit"
         type="primary">
         发布
       </el-button>
-      <el-button
-        @click="getContent"
-        type="danger">
+      <el-button type="danger">
         取消
       </el-button>
     </div>
@@ -26,6 +25,11 @@
 
 <script>
 // import E from 'wangeditor';
+import { getUserInfo, setPostMessage } from '~/server/api';
+import axios from 'axios';
+import Http from '~/server/http';
+const dayjs = require('dayjs');
+// const axios = require('axios');
 export default {
   name: 'Editor',
   components: {
@@ -33,7 +37,10 @@ export default {
   },
   data () {
     return {
-      editorContent: ''
+      postContent: '',
+      postTitle: '',
+      userId: 0,
+      type: 4
     }
   },
   mounted() {
@@ -41,18 +48,38 @@ export default {
     const E = require('wangeditor');
     const editor = new E(this.$refs.editor);
     editor.customConfig.onchange = (html) => {
-      this.editorContent = html
+      this.postContent = html
     }
     editor.create();
     // 修改文本域
     let textArea = document.querySelector(".w-e-text-container");
     textArea.style.height = '400px';
     textArea = null;
+    this.getUserId();
   },
   methods: {
-    getContent: function () {
-        alert(this.editorContent)
+    getUserId() {
+      getUserInfo().then(res => {
+        this.userId = res.data.id
+      }).catch(e => {
+        console.error('Get User Failed: ',e);
+      })
+    },
+    onSubmit() {
+      console.log(this.postContent)
+      Http.post('/api/discuss/submit', {
+          userId: this.userId,
+          title: this.postTitle,
+          content: this.postContent,
+          type: this.type,
+          // updatedAt: dayjs(new Date())
+      }).then(res => {
+        console.log('提交帖子成功', res);
+      }).catch(e => {
+        console.error('提交帖子失败',e);
+      })
     }
+
   }
 }
 </script>
