@@ -99,7 +99,7 @@
           name: this.form.name,
           place: this.form.locate,
           salary: this.form.salary,
-          date: this.form.date,
+          date: String(this.form.date),
           top: Number(this.form.delivery),
           workfare: this.form.type.join('-'),
           req: this.form.desc

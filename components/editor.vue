@@ -26,8 +26,6 @@
 <script>
 // import E from 'wangeditor';
 import { getUserInfo, setPostMessage } from '~/server/api';
-import axios from 'axios';
-import Http from '~/server/http';
 const dayjs = require('dayjs');
 // const axios = require('axios');
 export default {
@@ -67,7 +65,7 @@ export default {
     },
     onSubmit() {
       console.log(this.postContent)
-      Http.post('/api/discuss/submit', {
+      setPostMessage({
           userId: this.userId,
           title: this.postTitle,
           content: this.postContent,

@@ -48,14 +48,15 @@
       <el-form-item>
         <el-button
           type="primary"
-          @click="submitForm('ruleForm')">提交</el-button>
-        <el-button @click="resetForm('ruleForm')">取消</el-button>
+          @click="submitForm">提交</el-button>
+        <el-button @click="resetForm">取消</el-button>
       </el-form-item>
     </el-form>
   </div>
 </template>
 
 <script>
+  import { setCompanyMessage } from '~/server/api';
   export default {
     data() {
       return {
@@ -95,25 +96,20 @@
     },
     layout: 'blank',
     methods: {
-      submitForm(formName) {
-        // let self = this
-        // this.$refs[formName].validate((valid) => {
-        //   if (valid) {
-        //     self.$axios.post('/company/submit', {
-        //       name: self.ruleForm.name,
-        //       num: self.ruleForm.num,
-        //       address: self.ruleForm.address,
-        //       desc: self.ruleForm.desc
-        //     }).then(({status, data}) => {
-        //       if (status===200) {
-        //         location.href='/'
-        //         console.log("success")
-        //       }else {
-        //         self.error = `服务器出错，错误码:${status}`
-        //       }
-        //     })
-        //   }
-        // });
+      submitForm() {
+        setCompanyMessage({
+          name: this.ruleForm.name,
+          regNum: this.ruleForm.num,
+          address: this.ruleForm.address,
+          business: this.ruleForm.bussiness,
+          property: this.ruleForm.type,
+          people: this.ruleForm.staff,
+          info: this.ruleForm.desc
+        }).then(res => {
+          console.log('公司认证提交',res);
+        }).catch(e => {
+          console.log('公司认证提交失败',e);
+        })
       },
       resetForm(formName) {
         this.$refs[formName].resetFields();

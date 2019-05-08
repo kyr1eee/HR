@@ -34,6 +34,12 @@ export async function setPostMessage(data) {
   return Http.post(url, data);
 }
 
+// 公司信息接口，post写入
+export async function setCompanyMessage(data) {
+  const url = '/api/company/submit';
+  return Http.post(url, data);
+}
+
 // export async function posts() {
 //   const re = await axios.post('/posts')
 
