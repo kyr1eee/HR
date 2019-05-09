@@ -9,7 +9,7 @@ let router = new Router({
 router.post('/submit', async (ctx) => {
   let params = ctx.request.body
   let res=await new Promise((resolve,reject)=>{
-    sql.query('insert into companies(name,regNum,address,business,property,people,info) values(?,?,?,?,?,?,?);',[params.name,params.regNum,params.address,params.business,params.property,params.people,params.info],(error,result,filed)=>{
+    sql.query('insert into companies(name,regNum,address,business,property,people,info,email,password) values(?,?,?,?,?,?,?,?,?);',[params.name,params.regNum,params.address,params.business,params.property,params.people,params.info,params.email,params.password],(error,result,filed)=>{
         if (error)
           console.log(error);
         resolve(result)

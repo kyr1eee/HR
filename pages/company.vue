@@ -45,6 +45,17 @@
           v-model="ruleForm.desc"
           autosize>1</el-input>
       </el-form-item>
+      <el-form-item
+        label="邮件地址"
+        prop="email">
+        <el-input v-model="ruleForm.email">1</el-input>
+      </el-form-item>
+      <el-form-item
+        label="用户密码"
+        prop="pwd"
+        show-password>
+        <el-input v-model="ruleForm.pwd">1</el-input>
+      </el-form-item>
       <el-form-item>
         <el-button
           type="primary"
@@ -67,7 +78,9 @@
           bussiness: '',
           type: '',
           staff: '',
-          desc: ''
+          desc: '',
+          pwd: '',
+          email: ''
         },
         rules: {
           name: [
@@ -90,6 +103,12 @@
           ],
           desc: [
             { required: true, message: '请填写公司简介', trigger: 'blur' }
+          ],
+          pwd: [
+            { required: true, message: '请输入密码', trigger: 'blur' }
+          ],
+          email: [
+            { required: true, message: '请邮件地址', trigger: 'blur' }
           ]
         }
       };
@@ -104,11 +123,31 @@
           business: this.ruleForm.bussiness,
           property: this.ruleForm.type,
           people: this.ruleForm.staff,
-          info: this.ruleForm.desc
+          info: this.ruleForm.desc,
+          password: this.ruleForm.pwd,
+          email: this.ruleForm.email
         }).then(res => {
+          this.$notify({
+            title: '提交认证成功',
+            message: '还需要管理员审核哦',
+            position: 'top-left',
+            duration: 1000,
+          });
+          setTimeout(() => {
+            window.location.href = "http://stuer.ericwu.cn/discuss";
+          }, 500);
           console.log('公司认证提交',res);
         }).catch(e => {
           console.log('公司认证提交失败',e);
+          this.$notify({
+            title: '提交认证失败',
+            message: '即将退出',
+            position: 'top-left',
+            duration: 1000,
+          });
+          setTimeout(() => {
+            window.location.href = "http://stuer.ericwu.cn/discuss";
+          }, 500);
         })
       },
       resetForm(formName) {

@@ -3,7 +3,7 @@
     <div class="wrapper">
       <img
         class="icon"
-        src="https://ss1.bdstatic.com/70cFvXSh_Q1YnxGkpoWK1HF6hhy/it/u=1391408179,2191640814&fm=26&gp=0.jpg"
+        :src="avator"
         @click="selectUser">
       <div class="content">
         <div
@@ -28,6 +28,8 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
+import { getUserById } from '~/server/api';
 export default {
   components: {
   },
@@ -35,6 +37,11 @@ export default {
     data: {
       type: Object,
       default: null
+    }
+  },
+  data() {
+    return {
+      avator: ''
     }
   },
   computed: {
@@ -50,11 +57,11 @@ export default {
     }
   },
   mounted() {
-    // 通过this获取props
-    // console.log(this.author);
+    this.getUserAvator();
   },
   methods: {
     discussDetail() {
+      this.setCurrentPost(this.data);
       this.$router.push({
         path: '/discuss/detail',
         query: { pid: this.data.id },
@@ -63,7 +70,17 @@ export default {
     selectUser() {
       // 父组件指定子路由参数
       this.$router.push(`/user/${this.data.userId}`);
-    }
+    },
+    getUserAvator() {
+      getUserById(this.data.userId).then(res => {
+        this.avator = res.data.avatar;
+      }).catch(e => {
+        console.error('获取用户头像失败', e);
+      })
+    },
+    ...mapMutations({
+      setCurrentPost: 'setCurrentPost'
+    })
   }
 }
 </script>
@@ -72,10 +89,17 @@ export default {
 .main {
   width: 100%;
 
+
+
   .wrapper {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 15px 0;
+    &:hover {
+      cursor: pointer;
+      background-color: #f0f0f061;
+    }
 
     .icon {
       border-radius: 50%;

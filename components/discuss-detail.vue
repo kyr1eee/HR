@@ -8,7 +8,7 @@
         </div>
         <div class="post-content">
           <div class="main-content">
-            {{ data.content }}
+            <div v-html="data.content" />
           </div>
           <div class="bottom-group">
             <span><i class="el-icon-star-on" />赞</span>
@@ -60,9 +60,6 @@ export default {
       this.editorContent = html
     }
     editor.create();
-    setTimeout(() => {
-      console.log('详情页',this.data);
-    },200)
   }
 }
 </script>

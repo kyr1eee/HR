@@ -16,7 +16,9 @@
         type="primary">
         发布
       </el-button>
-      <el-button type="danger">
+      <el-button
+        type="danger"
+        @click="onCancel">
         取消
       </el-button>
     </div>
@@ -73,9 +75,29 @@ export default {
           // updatedAt: dayjs(new Date())
       }).then(res => {
         console.log('提交帖子成功', res);
+        this.$notify({
+          title: '发帖成功',
+          message: '还需要管理员审核哦',
+          position: 'top-left',
+          duration: 1000,
+        });
+        setTimeout(() => {
+          this.$router.push('/discuss');
+        }, 500);
       }).catch(e => {
         console.error('提交帖子失败',e);
       })
+    },
+    onCancel() {
+      this.$notify({
+          title: '即将离开',
+          message: '你将返回求职区',
+          position: 'top-left',
+          duration: 1000,
+        });
+        setTimeout(() => {
+          this.$router.push('/discuss');
+        }, 500)
     }
 
   }

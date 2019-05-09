@@ -18,11 +18,13 @@ export default {
   },
   computed: {
     ...mapGetters([
-      'post'
+      'post',
+      'currentPost'
     ])
   },
   created() {
-    this.postItem = this.setPostItem();
+    // this.postItem = this.setPostItem();
+    this.postItem = this.currentPost;
   },
   methods: {
     setPostItem() {

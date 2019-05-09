@@ -4,7 +4,7 @@
     <div class="post-wrapper">
       <div class="post-content">
         <li
-          v-for="(item, index) in data"
+          v-for="(item, index) in data.slice(0,7)"
           :key="index">
           <p @click="selectPost(item)">{{ item.title }}</p>
           <div class="title-bottom">

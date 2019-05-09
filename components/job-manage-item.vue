@@ -8,27 +8,31 @@
           class="hr-icon"
           src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=384335294,2228800258&fm=27&gp=0.jpg">
         <div class="job-name">
-          Web前端开发工程师
+          {{ data.name }}
         </div>
+        <!-- <el-divider direction="vertical" /> -->
       </div>
-      <el-divider direction="vertical" />
       <div class="item-middle">
         <div class="item-middle-top">
           <div class="job-city">
             <i class="el-icon-location-information" />
-            <span>上海</span>
+            <span>{{ data.place.slice(0,2) }}</span>
           </div>
           <div class="job-pay">
             <i class="el-icon-money" />
-            <span>50W/年</span>
+            <span>{{ data.salary }}</span>
           </div>
         </div>
         <div class="job-tip">
-          <span>五险一金</span>
-          <el-divider direction="vertical" />
-          <span>年终福利</span>
-          <el-divider direction="vertical" />
-          <span>扁平化管理</span>
+          <li
+            class="workfare"
+            v-for="(item, index) in workfare"
+            :key="index">
+            <el-divider
+              direction="vertical"
+              v-if="index !== 0"/>
+            <span>{{ item }}</span>
+          </li>
         </div>
       </div>
       <div class="item-right">
@@ -40,14 +44,30 @@
 </template>
 
 <script>
+import { mapMutations } from 'vuex';
 export default {
+  props: {
+    data: {
+      type: Object,
+      default: null
+    }
+  },
+  computed: {
+    workfare : function() {
+      return this.data.workfare ? this.data.workfare.split('-') : '无';
+    }
+  },
   methods: {
     selectJob() {
+      this.setCurrentJobInfo(this.data);
       this.$router.push({
         path: '/job-manage/detail',
-        query: { job : 'Web前端开发' }
-      })
-    }
+        query: { jobId : this.data.id }
+      });
+    },
+    ...mapMutations({
+      setCurrentJobInfo : 'setCurrentJobInfo'
+    })
   }
 }
 </script>
@@ -62,6 +82,7 @@ export default {
 
     &:hover {
       cursor: pointer;
+      background-color: #f0f0f061;
     }
 
     .hr-icon {
@@ -74,6 +95,8 @@ export default {
       display: flex;
       align-items: center;
       height: 100%;
+      width: 300px;
+      overflow: hidden;
 
       .job-name {
         display: inline-block;
@@ -89,6 +112,7 @@ export default {
       flex-direction: column;
       justify-content: space-around;
       height: 100%;
+      width: 200px;
 
       .item-middle-top {
 
@@ -113,8 +137,16 @@ export default {
       .job-tip {
         font-size: 12px;
         color: #7d7d7d;
+
+        .workfare {
+          display: inline-block;
+        }
       }
 
+    }
+
+    .item-right {
+      width: 100px;
     }
   }
 }

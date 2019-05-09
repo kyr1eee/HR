@@ -7,7 +7,7 @@ const config = mysql.createConnection({
   password: '123456',
   database: 'HR',
   // 解决错误：Cannot enqueue Query after fatal error
-  useConnectionPooling: true
+  // useConnectionPooling: true
 })
 
 module.exports = config

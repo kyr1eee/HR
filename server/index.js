@@ -7,7 +7,8 @@ import bodyParser from 'koa-bodyparser'
 import json from 'koa-json'
 import post from './interface/discuss'
 import jobmanage from './interface/job-manage'
-//import company from './interface/company'
+import company from './interface/company'
+import resumeManage from './interface/resume-manage'
 
 const app = new Koa()
 
@@ -43,9 +44,11 @@ async function start() {
     await nuxt.ready()
   }
 
-  //app.use(company.routes()).use(company.allowedMethods())
+  // 接口路由
+  app.use(company.routes()).use(company.allowedMethods())
   app.use(post.routes()).use(post.allowedMethods())
   app.use(jobmanage.routes()).use(jobmanage.allowedMethods())
+  app.use(resumeManage.routes()).use(resumeManage.allowedMethods())
 
   app.use(ctx => {
     ctx.status = 200

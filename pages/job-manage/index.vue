@@ -5,9 +5,9 @@
       <post-job />
       <div class="job-manage-list">
         <li
-          v-for="(item, index) in test"
+          v-for="(item, index) in data"
           :key="index">
-          <job-manage-item />
+          <job-manage-item :data="item"/>
         </li>
       </div>
     </div>
@@ -18,6 +18,7 @@
 import TitleDivider from '~/components/title-divider';
 import JobManageItem from '~/components/job-manage-item';
 import PostJob from '~/components/post-job';
+import { getJobMessage } from '~/server/api';
 export default {
   components: {
     TitleDivider,
@@ -26,8 +27,17 @@ export default {
   },
   data() {
     return {
-      test: [1,3,4,5,6,7,8,12]
+      // data: []
     }
+  },
+  async asyncData() {
+    let { data } = await getJobMessage();
+    // this.data = data;
+    console.log('async data', { data })
+    return { data };
+  },
+  mounted() {
+    console.log('mounted', this.data);
   }
 }
 </script>

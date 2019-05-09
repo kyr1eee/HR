@@ -21,7 +21,9 @@
             <dd><nuxt-link to="/company">公司信息</nuxt-link></dd>
             <dd><nuxt-link to="/mailbox">收件箱</nuxt-link></dd>
             <dd><nuxt-link to="/settings">账户设置</nuxt-link></dd>
-            <dd class="exit">退出</dd>
+            <dd
+              class="exit"
+              @click="exit">退出</dd>
           </div>
         </dl>
       </li>
@@ -43,6 +45,18 @@ export default {
   mounted(){
   },
   methods: {
+    exit() {
+      document.cookie = '';
+      this.$notify({
+        title: '退出登录',
+        message: '正在回到登录页',
+        position: 'top-left',
+        duration: 1000,
+      });
+      setTimeout(() => {
+        window.location.href="http://stuer.ericwu.cn/";
+      }, 500);
+    },
     iconMove() {
       this.$refs.menu.style.opacity = 1;
       this.$refs.menu.style.margin = '0px -50px';

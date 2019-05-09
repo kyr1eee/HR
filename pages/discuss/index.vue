@@ -33,8 +33,16 @@ export default {
       hotPost: []
     }
   },
+  async asyncData() {
+    let { data } = await getDiscuss();
+    let highLight = data.filter(item => item.highlight == 1);
+    return {
+      discuss: data,
+      hotPost: highLight
+    }
+  },
   created() {
-    this._getDiscuss();
+    // this._getDiscuss();
     // 请求API直至父组件mounted还没获取完
     // Vue生命周期： 父组件created -> 子组件created -> 子组件mounted -> 父组件mounted
   },
@@ -45,7 +53,7 @@ export default {
       getDiscuss().then(res => {
         // res -> Object, res.data -> Array
         this.discuss = res.data;
-        this.setPost(this.discuss);
+        // this.setPost(this.discuss);
         this.hotPost = this.getHotDiscuss(this.discuss);
         // console.log('discuss page created request',this.hotPost)
       }).catch(e => {
@@ -103,7 +111,7 @@ $bg: #fff;
 
     .post-content {
       width: 100%;
-      max-height: 65%;
+      max-height: 70%;
       min-height: 300px;
       margin-top: 100px;
       background: {

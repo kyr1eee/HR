@@ -62,7 +62,7 @@
             <el-button
               type="primary"
               @click="onSubmit">发布职位</el-button>
-            <el-button>取消</el-button>
+            <el-button @click="onCancel">取消</el-button>
           </el-form-item>
         </el-form>
       </div>
@@ -104,10 +104,30 @@
           workfare: this.form.type.join('-'),
           req: this.form.desc
         }).then(res => {
-          console.log('提交成功:',res)
+          console.log('提交成功:',res);
+          this.$notify({
+            title: '发布职位成功',
+            message: '正在回到职位管理页',
+            position: 'top-left',
+            duration: 1000,
+          });
+          setTimeout(() => {
+            this.$router.push('/job-manage');
+          }, 500);
         }).catch(e => {
           console.log('提交职位信息失败', e);
-        })
+        });
+      },
+      onCancel() {
+        this.$notify({
+          title: '取消发布职位',
+          message: '正在回到职位管理页',
+          position: 'top-left',
+          duration: 1000,
+        });
+        setTimeout(() => {
+          this.$router.push('/job-manage');
+        }, 500);
       }
     }
   }
