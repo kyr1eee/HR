@@ -34,10 +34,21 @@ export async function setJobMessage(data) {
   return Http.post(url, data);
 }
 
+export async function removeJobMessage(data) {
+  const url = '/api/job-manage/del';
+  return Http.post(url, data);
+}
+
 // 讨论区接口,post写入
 export async function setPostMessage(data) {
   const url = '/api/discuss/submit';
   return Http.post(url, data);
+}
+
+// 公司信息
+export async function getCompanyMessage() {
+  const url = '/api/company/message';
+  return Http.get(url);
 }
 
 // 公司信息接口，post写入

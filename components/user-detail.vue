@@ -3,10 +3,10 @@
     <div class="top-wrapper">
       <img
         class="author-icon"
-        src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=1662356546,3155434087&fm=27&gp=0.jpg">
+        :src="user.avatar">
       <div class="author-right">
-        <p class="author-name">名字</P>
-        <p class="author-sign">个人签名</P>
+        <p class="author-name">{{ user.name }}</P>
+        <p class="author-sign">{{ user.personSign }}</P>
       </div>
     </div>
     <div class="bottom-wrapper">
@@ -33,7 +33,9 @@
           </li>
         </ul>
       </div>
-      <user-message v-show="messageUI" />
+      <user-message
+        v-show="messageUI"
+        :data="user" />
       <user-home v-show="homeUI" />
     </div>
   </div>

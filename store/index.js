@@ -21,6 +21,7 @@ const store = () => new Vuex.Store({
   state: {
     isLogin: false, // 登录状态
     user: null, // 登录用户信息
+    company: [], // 公司信息
     pageUser: null, // 普通用户信息
     post: [], // 帖子数据
     currentJobInfo: null, // 当前点击工作职位信息
@@ -30,6 +31,7 @@ const store = () => new Vuex.Store({
   getters: {
     isLogin: (state) => state.isLogin,
     user: (state) => state.user,
+    company: (state) => state.company,
     pageUser: (state) => state.pageUser,
     post: (state) => state.post,
     currentJobInfo: (state) => state.currentJobInfo,
@@ -42,6 +44,9 @@ const store = () => new Vuex.Store({
     },
     setUser (state, payload) {
       state.user = payload
+    },
+    setCompany(state, payload) {
+      state.company = payload
     },
     setPageUser (state, payload) {
       state.pageUser = payload

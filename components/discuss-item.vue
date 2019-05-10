@@ -69,6 +69,7 @@ export default {
     },
     selectUser() {
       // 父组件指定子路由参数
+      this.setPageUser(this.data);
       this.$router.push(`/user/${this.data.userId}`);
     },
     getUserAvator() {
@@ -79,7 +80,8 @@ export default {
       })
     },
     ...mapMutations({
-      setCurrentPost: 'setCurrentPost'
+      setCurrentPost: 'setCurrentPost',
+      setPageUser: 'setPageUser'
     })
   }
 }

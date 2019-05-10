@@ -9,7 +9,9 @@
           <nuxt-link
             to="/my"
             tag="div">
-            <company-icon ref="iconCompany"/>
+            <company-icon
+              ref="iconCompany"
+              avatar="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=384335294,2228800258&fm=27&gp=0.jpg"/>
           </nuxt-link>
         </div>
         <dl
@@ -17,7 +19,7 @@
           @mouseleave="listMoveOut"
           ref="menu">
           <div>
-            <dd class="company-name">山寨野鸡公司名</dd>
+            <dd class="company-name">山寨野鸡公司</dd>
             <dd><nuxt-link to="/company">公司信息</nuxt-link></dd>
             <dd><nuxt-link to="/mailbox">收件箱</nuxt-link></dd>
             <dd><nuxt-link to="/settings">账户设置</nuxt-link></dd>
@@ -33,16 +35,25 @@
 
 <script>
 import CompanyIcon from './company-icon';
+import { mapGetters } from 'vuex';
 export default {
   components: {
     CompanyIcon
   },
   data() {
     return {
-      menuIn: false
+      menuIn: false,
     };
   },
-  mounted(){
+  computed: {
+    ...mapGetters([
+      'user'
+    ])
+  },
+  created() {
+    setTimeout(() => {
+      console.log(this.user);
+    },5000)
   },
   methods: {
     exit() {

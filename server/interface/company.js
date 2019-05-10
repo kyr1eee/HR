@@ -6,6 +6,16 @@ let router = new Router({
   prefix: '/api/company'
 })
 
+router.get('/message', async (ctx) => {
+  let res=await new Promise((resolve,reject)=>{
+    sql.query('select * from companies where id = 5;', (error,result,filed)=>{
+        if (error) return error;
+        resolve(result)
+    })
+  })
+  ctx.response.body={status:200,msg:'操作成功',data:res}
+})
+
 router.post('/submit', async (ctx) => {
   let params = ctx.request.body
   let res=await new Promise((resolve,reject)=>{

@@ -17,6 +17,18 @@ router.get('/findAll', async (ctx) => {
   ctx.response.body={status:200,msg:'操作成功',data:res}
 })
 
+router.post('/del', async (ctx) => {
+  let params = ctx.request.body;
+  let res = await new Promise((resolve, reject) => {
+    sql.query('delete from jobinfos where id = ?;',[params.id],(error,result,filed)=>{
+      if (error)
+        console.log(error);
+      resolve(result)
+    })
+  })
+  ctx.response.body={status:200,msg:'操作成功',data:res}
+})
+
 router.post('/submit', async (ctx) => {
   let params = ctx.request.body;
   console.log('提交', params);

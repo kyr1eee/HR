@@ -6,7 +6,7 @@
       <div class="left-content">
         <img
           class="icon"
-          src="http://img4.imgtn.bdimg.com/it/u=4111730558,764969898&fm=26&gp=0.jpg" >
+          src="~/static/resume.jpg" >
         <span class="job-name">{{ data.favor }}</span>
       </div>
       <div class="center-content">

@@ -20,17 +20,42 @@
         <h3>工作地址</h3>
         <span>{{ currentJobInfo.place }}</span>
       </div>
+      <div class="btn">
+        <el-button
+          @click="onCancel"
+          type="danger">删除职位</el-button>
+      </div>
     </div>
   </div>
 </template>
 
 <script>
+import { removeJobMessage } from '~/server/api';
 import { mapGetters } from 'vuex';
 export default {
   computed: {
     ...mapGetters([
       'currentJobInfo'
     ])
+  },
+  methods: {
+    onCancel() {
+      removeJobMessage({
+        id: this.currentJobInfo.id
+      }).then(res => {
+        this.$notify({
+          title: '删除职位成功',
+          message: '正在回到职位管理页',
+          type: 'waring',
+          duration: 1000,
+        });
+        setTimeout(() => {
+          this.$router.push('/job-manage');
+        }, 500);
+      }).catch(e => {
+        console.error('删除职位失败',e);
+      })
+    }
   }
 }
 </script>
@@ -76,6 +101,10 @@ export default {
 
     .job-address {
       padding-bottom: 20px;
+    }
+
+    .btn {
+      padding: 20px 0;
     }
   }
 }

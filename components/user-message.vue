@@ -3,13 +3,13 @@
     <title-divider title="基本信息" />
     <div class="under-message">
       <ul>
-        <li>昵称 : </li>
-        <li>个性签名</li>
-        <li>性别</li>
-        <li>学历</li>
-        <li>联系方式</li>
-        <li>身份类型</li>
-        <li>学号</li>
+        <li>昵称: {{ data.nickName }}</li>
+        <li>个性签名: {{ data.personSign }}</li>
+        <li>年龄: {{ data.age }}</li>
+        <li>学历: {{ data.eduLevel }}</li>
+        <li>联系方式: {{ data.phone }}</li>
+        <li>生日日期: {{ data.birthTime }}</li>
+        <li>学号: {{ data.idCard }}</li>
       </ul>
     </div>
   </div>
@@ -20,6 +20,12 @@ import TitleDivider from './title-divider'
 export default {
   components: {
     TitleDivider
+  },
+  props: {
+    data: {
+      type: Object,
+      default: null
+    }
   }
 }
 </script>

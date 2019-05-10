@@ -9,10 +9,14 @@ let router = new Router({
 
 router.get('/discuss', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
-    sql.query('select * from posts;', (error,result,filed)=>{
-        if (error) return error;
-        resolve(result)
-    })
+    try {
+      sql.query('select * from posts;', (error,result,filed)=>{
+          if (error) return error;
+          resolve(result)
+      })
+    } catch(e) {
+      throw e;
+    }
   })
   ctx.response.body={status:200,msg:'操作成功',data:res}
 })
