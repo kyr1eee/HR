@@ -14,8 +14,13 @@ export default {
   },
   data() {
     return {
-      currentUser: null
+      currentUser: {}
     }
+  },
+  computed: {
+    ...mapGetters([
+      'pageUser'
+    ])
   },
   created() {
     this.getUser()
@@ -23,7 +28,7 @@ export default {
   },
   methods: {
     getUser() {
-      getUserById(this.$route.params.id).then(res => {
+      getUserById(this.$route.query.uid).then(res => {
         this.currentUser = res.data;
         console.log('当前用户', this.currentUser);
       }).catch(e => {

@@ -73,7 +73,7 @@ export default {
   },
   mounted() {
 
-
+    console.log('当前数据',this.currentData)
   },
   methods: {
     // current-page事件获取当前页码

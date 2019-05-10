@@ -8,7 +8,7 @@ let router = new Router({
 
 router.get('/message', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
-    sql.query('select * from companies where id = 5;', (error,result,filed)=>{
+    sql.query('select * from companies where id = 5', (error,result,filed)=>{
         if (error) return error;
         resolve(result)
     })
@@ -19,7 +19,7 @@ router.get('/message', async (ctx) => {
 router.post('/submit', async (ctx) => {
   let params = ctx.request.body
   let res=await new Promise((resolve,reject)=>{
-    sql.query('insert into companies(name,regNum,address,business,property,people,info,email,password) values(?,?,?,?,?,?,?,?,?);',[params.name,params.regNum,params.address,params.business,params.property,params.people,params.info,params.email,params.password],(error,result,filed)=>{
+    sql.query('insert into companies(name,regNum,address,business,property,people,info,email,password) values(?,?,?,?,?,?,?,?,?)',[params.name,params.regNum,params.address,params.business,params.property,params.people,params.info,params.email,params.password],(error,result,filed)=>{
         if (error)
           console.log(error);
         resolve(result)
@@ -31,7 +31,7 @@ router.post('/submit', async (ctx) => {
 router.post('/save', async (ctx) => {
   let params = ctx.request.body
   let res=await new Promise((resolve,reject)=>{
-    sql.query('update companies(name,regNum,address,business,property,people,info) values(?,?,?,?,?,?,?) where id = 3;',[params.name,params.regNum,params.address,params.business,params.property,params.people,params.info],(error,result,filed)=>{
+    sql.query('update companies(name,regNum,address,business,property,people,info) values(?,?,?,?,?,?,?) where id = 3',[params.name,params.regNum,params.address,params.business,params.property,params.people,params.info],(error,result,filed)=>{
         if (error)
           console.log(error)
         resolve(result)

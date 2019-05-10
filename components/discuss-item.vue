@@ -3,7 +3,7 @@
     <div class="wrapper">
       <img
         class="icon"
-        :src="avator"
+        :src="avatar"
         @click="selectUser">
       <div class="content">
         <div
@@ -41,7 +41,7 @@ export default {
   },
   data() {
     return {
-      avator: ''
+      avatar: ''
     }
   },
   computed: {
@@ -70,11 +70,14 @@ export default {
     selectUser() {
       // 父组件指定子路由参数
       this.setPageUser(this.data);
-      this.$router.push(`/user/${this.data.userId}`);
+      this.$router.push({
+        path: '/user/detail',
+        query: { uid : this.data.userId }
+      });
     },
     getUserAvator() {
       getUserById(this.data.userId).then(res => {
-        this.avator = res.data.avatar;
+        this.avatar = res.data.avatar;
       }).catch(e => {
         console.error('获取用户头像失败', e);
       })

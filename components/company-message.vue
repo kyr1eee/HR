@@ -1,14 +1,14 @@
 <template>
   <div class="main-content">
     <div class="box-card">
-      <!-- <el-button @click="test">點我</el-button> -->
+      <el-button @click="test">點我</el-button>
       <div class="company-name">
         <img
           class="company-icon"
           src="https://ss0.bdstatic.com/70cFvHSh_Q1YnxGkpoWK1HF6hhy/it/u=384335294,2228800258&fm=27&gp=0.jpg">
-        <span>公司名: {{ company[0].name }}</span>
+          <!-- <span>公司名: {{ company[0].name }}</span> -->
       </div>
-      <div class="company-id">
+      <!-- <div class="company-id">
         <span>公司经营号: {{ company[0].regNum }}</span>
       </div>
       <div class="company-business">
@@ -25,7 +25,7 @@
       </div>
       <div class="company-type">
         <span> {{ company[0].property }}</span>
-      </div>
+      </div> -->
     </div>
   </div>
 </template>

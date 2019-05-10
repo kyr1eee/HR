@@ -10,7 +10,7 @@ let router = new Router({
 router.get('/discuss', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
     try {
-      sql.query('select * from posts;', (error,result,filed)=>{
+      sql.query('select * from posts', (error,result,filed)=>{
           if (error) return error;
           resolve(result)
       })
@@ -24,7 +24,7 @@ router.get('/discuss', async (ctx) => {
 router.post('/discuss/submit', async (ctx) => {
   let params = ctx.request.body
   let res=await new Promise((resolve,reject)=>{
-    sql.query('insert into posts(userId,title,content,type,updatedAt) values(?,?,?,?,Now());',[params.userId,params.title,params.content,params.type],(error,result,filed)=>{
+    sql.query('insert into posts(userId,title,content,type,updatedAt) values(?,?,?,?,Now())',[params.userId,params.title,params.content,params.type],(error,result,filed)=>{
         if (error) return error;
         resolve(result)
     })

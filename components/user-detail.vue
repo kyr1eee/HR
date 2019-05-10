@@ -63,6 +63,10 @@ export default {
       homeUI: true,
     }
   },
+  created() {
+    setTimeout(() => {console.log('接收', this.user);},5000)
+
+  },
   methods: {
     showMessage() {
       this.homeUI = false;

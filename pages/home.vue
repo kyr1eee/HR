@@ -20,8 +20,8 @@ export default {
     }
   },
   created() {
-    this.getUserMessage();
-    this.getCompanyMessage();
+    // this.getUserMessage();
+    // this.getCompanyMessage();
   },
   mounted() {
   },

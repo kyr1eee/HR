@@ -62,8 +62,7 @@ module.exports = {
       pathRewrite: { '^/ericwu': '/api' }
     }],
     ['/api', {
-      target: 'http://localhost:3000',
-      changeOrigin: true
+      target: 'http://localhost:3000'
     }]
   ],
 

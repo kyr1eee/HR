@@ -1,7 +1,8 @@
 <template>
   <div class="home">
     <div class="home-wrapper">
-      我是假的主页<!-- 1<company-message /> -->
+      我是假的主页1
+      <!-- <company-message /> -->
     </div>
   </div>
 </template>
@@ -36,7 +37,7 @@ export default {
     },
     getCompanyMessage() {
       getCompanyMessage().then(res => {
-        this.setCompany(res.data);
+        this.setCompany(res.data[0]);
       }).catch(e => {
         console.error('获取公司信息失败',e)
       })

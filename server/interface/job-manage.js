@@ -8,7 +8,7 @@ let router = new Router({
 
 router.get('/findAll', async (ctx) => {
   let res=await new Promise((resolve,reject)=>{
-    sql.query('select * from jobinfos;', (error,result,filed)=>{
+    sql.query('select * from jobinfos', (error,result,filed)=>{
         if (error)
           console.log(error)
         resolve(result)
@@ -20,7 +20,7 @@ router.get('/findAll', async (ctx) => {
 router.post('/del', async (ctx) => {
   let params = ctx.request.body;
   let res = await new Promise((resolve, reject) => {
-    sql.query('delete from jobinfos where id = ?;',[params.id],(error,result,filed)=>{
+    sql.query('delete from jobinfos where id = ?',[params.id],(error,result,filed)=>{
       if (error)
         console.log(error);
       resolve(result)
@@ -33,7 +33,7 @@ router.post('/submit', async (ctx) => {
   let params = ctx.request.body;
   console.log('提交', params);
   let res = await new Promise((resolve, reject) => {
-    sql.query('insert into jobinfos(coId,name,place,salary,date,top,workfare,req) values(?,?,?,?,?,?,?,?);',[3,params.name,params.place,params.salary,params.date,params.top,params.workfare,params.req],(error,result,filed)=>{
+    sql.query('insert into jobinfos(coId,name,place,salary,date,top,workfare,req) values(?,?,?,?,?,?,?,?)',[3,params.name,params.place,params.salary,params.date,params.top,params.workfare,params.req],(error,result,filed)=>{
       if (error)
         console.log('提交职位信息失败1:', error);
       resolve(result)
