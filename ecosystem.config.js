@@ -22,7 +22,7 @@ module.exports = {
       user : 'node',
       host : '212.83.163.1',
       ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
+      repo : 'https://github.com/kyr1eee/HR.git',
       path : '/var/www/production',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     },
@@ -30,7 +30,7 @@ module.exports = {
       user : 'root',
       host : '47.106.247.211',
       ref  : 'origin/master',
-      repo : 'git@github.com:repo.git',
+      repo : 'https://github.com/kyr1eee/HR.git',
       path : '/root/HR-System',
       'post-deploy' : 'npm install && pm2 reload ecosystem.config.js --env production'
     }
